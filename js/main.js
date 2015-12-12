@@ -1,7 +1,9 @@
 var codingBarrierApp = angular.module('codingBarrierApp', ['ngRoute']);
 
 // configure our routes
-codingBarrierApp.config(function ($routeProvider) {
+codingBarrierApp.config(function ($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+    
     $routeProvider
 
             // route for the home page
@@ -26,6 +28,7 @@ codingBarrierApp.config(function ($routeProvider) {
                 templateUrl: 'pages/404.html',
                 controller: 'notFoundController'
             });
+
 });
 
 // create the controller and inject Angular's $scope
