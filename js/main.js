@@ -8,28 +8,38 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
 
             // route for the home page
             .when('/', {
+                title: 'Home',
                 templateUrl: 'pages/home.html',
                 controller: 'mainController'
             })
 
             // route for the about page
             .when('/about', {
+                title: 'About',
                 templateUrl: 'pages/about.html',
                 controller: 'aboutController'
             })
 
             // route for the contact page
             .when('/contact', {
+                title: 'Contact',
                 templateUrl: 'pages/contact.html',
                 controller: 'contactController'
             })
 
             .otherwise({
+                title: '404',
                 templateUrl: 'pages/404.html',
                 controller: 'notFoundController'
             });
 
 });
+
+codingBarrierApp.run(['$rootScope', function($rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        $rootScope.title = current.$$route.title;
+    });
+}]);
 
 // create the controller and inject Angular's $scope
 codingBarrierApp.controller('mainController', function ($scope) {
