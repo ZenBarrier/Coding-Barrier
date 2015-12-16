@@ -1,20 +1,17 @@
 <!-- blog.html -->
-<div>
-    <div class="jumbotron text-center">
-        <h1>Blog Page</h1>
+<div class="jumbotron text-center">
+    <h1>Blog Page</h1>
 
-        <p>{{ message}}</p>
-    </div>
+    <p>{{ message}}</p>
+</div>
 
-    <div class="row">
-        <div ng-repeat="post in blog" class="col-md-6 col-xs-12">
-            <div class="page-header">
-                <h1>{{post.title}}
-                    <small>By {{post.author.displayName}}</small>
-                </h1>
-            </div>
-            <div ng-bind-html="post.content"></div>
+<div class="row">
+    <div ng-repeat="post in blog" class="col-md-6 col-xs-12">
+        <div class="page-header">
+            <h1>{{post.title}}
+                <small>By {{post.author.displayName}}</small>
+            </h1>
         </div>
+        <div ng-bind-html="post.content"></div>
     </div>
-
 </div>
