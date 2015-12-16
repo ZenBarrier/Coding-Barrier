@@ -25,4 +25,9 @@ angular.module('codingBarrierApp').controller('blogController', function ($scope
     var blogRetrievedFail = function (response) {
         $scope.blog = "error";
     };
+
+    $scope.jumpBreak = function (string, index) {
+        $scope.array = string.split('<br />');
+        return $scope.result = $scope.array[index];
+    }
 });
