@@ -11,10 +11,10 @@ angular.module('codingBarrierApp').controller('blogController', function ($scope
     $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts?key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
             .then(
                     function (response) {
-                        blogRetrievedSuccess(response)
+                        blogRetrievedSuccess(response);
                     },
                     function (response) {
-                        blogRetrievedFail(response)
+                        blogRetrievedFail(response);
                     });
 
     var blogRetrievedSuccess = function (response) {
@@ -29,5 +29,5 @@ angular.module('codingBarrierApp').controller('blogController', function ($scope
     $scope.jumpBreak = function (string, index) {
         $scope.array = string.split('<br />');
         return $scope.result = $scope.array[index];
-    }
+    };
 });
