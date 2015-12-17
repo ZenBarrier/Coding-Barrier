@@ -32,6 +32,12 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'pages/blog.html',
                 controller: 'blogController'
             })
+            
+            .when('/blog/:postPath', {
+                title: 'Post | Blog',
+                templateUrl: 'pages/blogPost.html',
+                controller: 'blogPostController'
+            })
 
             .otherwise({
                 title: '404',
