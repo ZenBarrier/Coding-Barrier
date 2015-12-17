@@ -26,8 +26,8 @@ angular.module('codingBarrierApp').controller('blogController', function ($scope
         $scope.blog = "error";
     };
 
-    $scope.jumpBreak = function (string, index) {
-        $scope.array = string.split("<a name='more'>");
-        return $scope.result = $scope.array[index];
+    $scope.jumpBreak = function (post, index) {
+        var postArray = post.split("<a name='more'>");
+        return $scope.result = postArray[index];
     };
 });
