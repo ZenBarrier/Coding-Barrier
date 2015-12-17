@@ -33,7 +33,7 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
                 controller: 'blogController'
             })
             
-            .when('/blog/:postPath', {
+            .when('/blog/:year/:month/:postPath', {
                 title: 'Post | Blog',
                 templateUrl: 'pages/blogPost.html',
                 controller: 'blogPostController'

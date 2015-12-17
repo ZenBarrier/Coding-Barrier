@@ -7,10 +7,10 @@
 
 angular.module('codingBarrierApp').controller('blogPostController', function ($scope, $http, $routeParams) {
     $scope.message = 'This will be my blog page!';
-    var path = $routeParams.postPath;
+    var path = $routeParams.year+'/'+$routeParams.month+'/'+$routeParams.postPath;
 
     $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts/\n\
-bypath?path=" + path + "key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
+bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
             .then(
                     function (response) {
                         blogRetrievedSuccess(response);
@@ -20,11 +20,12 @@ bypath?path=" + path + "key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                     });
 
     var blogRetrievedSuccess = function (response) {
-        $scope.post = response;
-        console.log(response);
+        $scope.post = response.data;
+        console.log(response.data);
     };
 
     var blogRetrievedFail = function (response) {
-        $scope.blog = "error";
+        $scope.post = "error";
+        console.log(response);
     };
 });

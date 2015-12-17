@@ -30,4 +30,9 @@ angular.module('codingBarrierApp').controller('blogController', function ($scope
         var postArray = post.split("<a name='more'>");
         return $scope.result = postArray[index];
     };
+    
+    $scope.extractPath = function (urlString){
+        var postUrl = new URL(urlString);
+        return postUrl.pathname;
+    };
 });
