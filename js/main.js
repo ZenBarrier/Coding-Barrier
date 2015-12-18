@@ -3,7 +3,7 @@ var codingBarrierApp = angular.module('codingBarrierApp', ['ngRoute', 'ngSanitiz
 // configure our routes
 codingBarrierApp.config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
-    
+
     $routeProvider
 
             // route for the home page
@@ -26,15 +26,16 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'pages/contact.html',
                 controller: 'contactController'
             })
-            
+
             .when('/blog', {
                 title: 'Blog',
                 templateUrl: 'pages/blog.html',
                 controller: 'blogController'
             })
-            
+
             .when('/blog/:year/:month/:postPath', {
                 title: 'Post | Blog',
+                hasComments: true,
                 templateUrl: 'pages/blogPost.html',
                 controller: 'blogPostController'
             })
@@ -47,11 +48,12 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
 
 });
 
-codingBarrierApp.run(['$rootScope', function($rootScope) {
-    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-        $rootScope.title = current.title;
-    });
-}]);
+codingBarrierApp.run(['$rootScope', function ($rootScope) {
+        $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+            $rootScope.title = current.title;
+            $rootScope.hasComments = current.hasComments;
+        });
+    }]);
 
 // create the controller and inject Angular's $scope
 codingBarrierApp.controller('mainController', function ($scope) {
