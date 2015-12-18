@@ -5,7 +5,7 @@
  */
 
 
-angular.module('codingBarrierApp').controller('blogPostController', function ($rootScope, $scope, $http, $routeParams) {
+angular.module('codingBarrierApp').controller('blogPostController', function ($rootScope, $scope, $http, $location, $routeParams) {
     $scope.message = 'This will be my blog page!';
     var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
 
@@ -38,5 +38,10 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
         $scope.post = "error";
         $rootScope.hasComments = false;
         console.log(response);
+
+        if (response.status === 404) {
+            $location.path('/404');
+            $location.replace();
+        }
     };
 });
