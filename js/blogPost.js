@@ -22,7 +22,6 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
     var blogRetrievedSuccess = function (response) {
         $scope.post = response.data;
         $scope.disqus = 'pages/disqusModule.html';
-        //$rootScope.hasComments = true;
         $rootScope.title = response.data.title + " | Blog";
         console.log(response.data);
 
