@@ -12,6 +12,7 @@ angular.module('codingBarrierApp').controller('blogPostController',
             var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
             
             $scope.trustHtml = function (html) {
+                SyntaxHighlighter.highlight();
                 return $sce.trustAsHtml(html);
             };
             
