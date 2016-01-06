@@ -6,12 +6,15 @@
 
 
 angular.module('codingBarrierApp').controller('blogPostController',
-        function ($rootScope, $scope, $http, $location, $routeParams, $window) {
+        function ($rootScope, $scope, $http, $location, $routeParams, $window, $sce) {
             $scope.message = 'This will be my blog page!';
             var getCount = 0;
             var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
-
-
+            
+            $scope.trustHtml = function (html) {
+                return $sce.trustAsHtml(html);
+            };
+            
             $scope.getPost = function () {
 
                 $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts/\n\

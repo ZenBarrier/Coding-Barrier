@@ -4,4 +4,4 @@
 
     <p>{{ post.author.displayName}}</p>
 </div>
-<div ng-bind-html="post.content"></div>
+<div ng-bind-html="trustHtml(post.content)"></div>
