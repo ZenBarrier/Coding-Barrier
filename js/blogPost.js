@@ -10,12 +10,12 @@ angular.module('codingBarrierApp').controller('blogPostController',
             $scope.message = 'This will be my blog page!';
             var getCount = 0;
             var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
-            
+
             $scope.trustHtml = function (html) {
                 SyntaxHighlighter.highlight();
                 return $sce.trustAsHtml(html);
             };
-            
+
             $scope.getPost = function () {
 
                 $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts/\n\
@@ -35,13 +35,15 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                     $rootScope.hasComments = true;
                     console.log(response.data);
 
-                    DISQUS.reset({
-                        reload: true,
-                        config: function () {
-                            //this.page.identifier = response.data.id;
-                            this.page.url = response.data.url;
-                        }
-                    });
+                    if (typeof DISQUS !== 'undefined') {
+                        DISQUS.reset({
+                            reload: true,
+                            config: function () {
+                                //this.page.identifier = response.data.id;
+                                this.page.url = response.data.url;
+                            }
+                        });
+                    };
                 };
 
                 var blogRetrievedFail = function (response) {
@@ -53,8 +55,8 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                         if (getCount < 3) {
                             getCount++;
                             $scope.getPost();
-                        } else{
-                            $window.location.href = 'http://blog.codingbarrier.com/'+path;
+                        } else {
+                            $window.location.href = 'http://blog.codingbarrier.com/' + path;
                         }
                     }
 
