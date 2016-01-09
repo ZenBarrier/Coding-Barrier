@@ -14,10 +14,10 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
             })
 
             // route for the about page
-            .when('/about', {
-                title: 'About',
-                templateUrl: 'pages/about.html',
-                controller: 'aboutController'
+            .when('/resume', {
+                title: 'Resume',
+                templateUrl: 'pages/resume.html',
+                controller: 'resumeController'
             })
 
             // route for the contact page
@@ -62,8 +62,8 @@ codingBarrierApp.controller('mainController', function ($scope) {
     $scope.message = 'Coding Barrier under construction.';
 });
 
-codingBarrierApp.controller('aboutController', function ($scope) {
-    $scope.message = 'This will be about me.';
+codingBarrierApp.controller('resumeController', function ($scope) {
+    $scope.message = 'This will be about my resume.';
 });
 
 codingBarrierApp.controller('contactController', function ($scope) {

@@ -5,7 +5,7 @@
  */
 
 
-angular.module('codingBarrierApp').controller('blogController', function ($scope, $http) {
+angular.module('codingBarrierApp').controller('blogController', function ($scope, $http, $sce) {
     $scope.message = 'This will be my blog page!';
 
     $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts?key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
@@ -28,7 +28,7 @@ angular.module('codingBarrierApp').controller('blogController', function ($scope
 
     $scope.jumpBreak = function (post, index) {
         var postArray = post.split("<a name='more'>");
-        return $scope.result = postArray[index];
+        return $scope.result = $sce.trustAsHtml(postArray[index]);
     };
     
     $scope.extractPath = function (urlString){
