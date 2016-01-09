@@ -33,6 +33,7 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                     $scope.disqus = 'pages/disqusModule.html';
                     $rootScope.title = response.data.title + " | Blog";
                     $rootScope.hasComments = true;
+                    $rootScope.post = response.data;
                     console.log(response.data);
 
                     if (typeof DISQUS !== 'undefined') {
@@ -43,7 +44,8 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                                 this.page.url = response.data.url;
                             }
                         });
-                    };
+                    }
+                    ;
                 };
 
                 var blogRetrievedFail = function (response) {
@@ -57,6 +59,7 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                             $scope.getPost();
                         } else {
                             $window.location.href = 'http://blog.codingbarrier.com/' + path;
+                            $location.replace();
                         }
                     }
 
