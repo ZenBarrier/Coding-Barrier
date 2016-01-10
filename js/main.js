@@ -71,7 +71,7 @@ codingBarrierApp.controller('mainController', function ($rootScope, $location) {
 
 codingBarrierApp.controller('resumeController', function ($rootScope) {
     $rootScope.header = 'Resume';
-    $rootScope.message = 'This will be about my resume.';
+    $rootScope.message = 'Anthony Barrera';
 });
 
 codingBarrierApp.controller('contactController', function ($rootScope) {
