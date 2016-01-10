@@ -99,6 +99,7 @@ body{
     padding-top: 70px;
 }
 
+
 h1.resumeSection{
     border-bottom: solid 1px #dddddd;
     border-top: solid 2px black;
@@ -115,8 +116,18 @@ h1.resumeSection{
     position: relative;
 }
 
+.left-block{
+    background-color: #ccc;
+    height: 100px;
+}
 
-
+.right-block{
+    background-color: #ccc;
+    height: 100px;
+}
+#main{
+    width: inherit;
+}
 
 
 
@@ -208,9 +219,9 @@ h1.resumeSection{
 }
 
 @media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
