@@ -1,5 +1,5 @@
 <div id="disqus_thread"></div>
-<script id="disqus_script" params="{{post.url}} {{post.id}}">
+<script id="disqus_script" params="{{post.url}}">
 
             /**
              * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -7,9 +7,9 @@
              */
 
             var disqus_config = function () {
-                var postParam = $('#disqus_script').attr('params').split(/\s+/);
+                var postParam = $('#disqus_script').attr('params');
                 console.log(postParam);
-                this.page.url = postParam[0]; // Replace PAGE_URL with your page's canonical URL variable
+                this.page.url = postParam; // Replace PAGE_URL with your page's canonical URL variable
                 //this.page.identifier = postParam[1]; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
