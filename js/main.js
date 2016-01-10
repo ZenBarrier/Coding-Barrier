@@ -9,7 +9,6 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
             // route for the home page
             .when('/', {
                 title: 'Home',
-                hasJumbo: false,
                 templateUrl: 'pages/home.html',
                 controller: 'mainController'
             })
@@ -17,7 +16,6 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
             // route for the about page
             .when('/resume', {
                 title: 'Resume',
-                hasJumbo: true,
                 templateUrl: 'pages/resume.html',
                 controller: 'resumeController'
             })
@@ -25,21 +23,18 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
             // route for the contact page
             .when('/contact', {
                 title: 'Contact',
-                hasJumbo: true,
                 templateUrl: 'pages/contact.html',
                 controller: 'contactController'
             })
 
             .when('/blog', {
                 title: 'Blog',
-                hasJumbo: true,
                 templateUrl: 'pages/blog.html',
                 controller: 'blogController'
             })
 
             .when('/blog/:year/:month/:postPath', {
                 title: 'Post | Blog',
-                hasJumbo: true,
                 hasComments: true,
                 templateUrl: 'pages/blogPost.html',
                 controller: 'blogPostController'
@@ -47,7 +42,6 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
 
             .otherwise({
                 title: '404',
-                hasJumbo: true,
                 templateUrl: 'pages/404.html',
                 controller: 'notFoundController'
             });
@@ -58,16 +52,21 @@ codingBarrierApp.run(['$rootScope', function ($rootScope) {
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             $rootScope.title = current.title;
             $rootScope.hasComments = current.hasComments;
-            $rootScope.hasJumbo = current.hasJumbo;
         });
     }]);
 
 // create the controller and inject Angular's $scope
-codingBarrierApp.controller('mainController', function ($scope) {
+codingBarrierApp.controller('mainController', function ($rootScope, $location) {
 
     // create a message to display in our view
-    //$scope.header = 'Home Page';
-    //$scope.message = 'Coding Barrier under construction.';
+    $rootScope.header = 'Home Page';
+    $rootScope.message = 'Coding Barrier under construction.';
+    var fullUrl = $location.absUrl();
+    if(fullUrl.indexOf("anthonybarrera.com") > -1){
+        $rootScope.siteName = "Anthony Barrera";
+    }else{
+        $rootScope.siteName = "Coding Barrier";
+    }
 });
 
 codingBarrierApp.controller('resumeController', function ($rootScope) {
