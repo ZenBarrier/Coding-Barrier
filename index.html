@@ -72,17 +72,17 @@
         <div class="main container-fluid">
 
             <div class="main row">
-                <div class="col-sm-2 left-wrap hidden-xs">
+                <div class="col-md-2 col-sm-4 left-wrap hidden-xs">
                     <div class="left-block" data-spy="affix" data-offset-top='300'>
                         <p>hello world</p>
                     </div>
                 </div>
-                <div class="center-block col-sm-8">
-                    <div ng-view></div>
+                <div class="center-block col-sm-8 col-sx-12">
+                    <div id="center-content" ng-view></div>
 
                     <div ng-include="'pages/disqusModule.html'" ng-show="hasComments"></div>
                 </div>
-                <div class="col-sm-2 right-wrap hidden-xs">
+                <div class="col-md-2 right-wrap hidden-xs hidden-sm">
                     <div class="right-block" data-spy="affix" data-offset-top='300'>
                     </div>
                 </div>
