@@ -35,6 +35,7 @@ angular.module('codingBarrierApp').controller('blogController', function ($scope
         var jText = $('<div/>').html(postBreak);
         jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
         jText.find("iframe").addClass('embed-responsive-item');
+        jText.find("img").addClass('img-responsive');
         return $sce.trustAsHtml(jText.html());
 
     };

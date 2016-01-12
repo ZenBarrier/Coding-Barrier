@@ -15,6 +15,7 @@ angular.module('codingBarrierApp').controller('blogPostController',
                 var jText = $('<div/>').html(htmlString);
                 jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
                 jText.find("iframe").addClass('embed-responsive-item');
+                jText.find("img").addClass('img-responsive');
                 return $sce.trustAsHtml(jText.html());
             };
 
@@ -35,7 +36,7 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                     $scope.disqus = 'pages/disqusModule.html';
                     $rootScope.title = response.data.title + " | Blog";
                     $rootScope.header = response.data.title;
-                    $rootScope.message = 'by '+response.data.author.displayName;
+                    $rootScope.message = 'by ' + response.data.author.displayName;
                     $rootScope.hasComments = true;
                     $rootScope.post = response.data;
                     console.log(response.data);
