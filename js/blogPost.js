@@ -10,9 +10,12 @@ angular.module('codingBarrierApp').controller('blogPostController',
             var getCount = 0;
             var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
 
-            $scope.trustHtml = function (html) {
+            $scope.trustHtml = function (htmlString) {
                 SyntaxHighlighter.highlight();
-                return $sce.trustAsHtml(html);
+                var jText = $('<div/>').html(htmlString);
+                jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
+                jText.find("iframe").addClass('embed-responsive-item');
+                return $sce.trustAsHtml(jText.html());
             };
 
             $scope.getPost = function () {

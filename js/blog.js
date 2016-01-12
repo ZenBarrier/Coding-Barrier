@@ -6,7 +6,7 @@
 
 
 angular.module('codingBarrierApp').controller('blogController', function ($scope, $rootScope, $http, $sce) {
-    
+
     $rootScope.header = 'Coding Barrier Blog';
     $rootScope.message = 'This will be my blog page!';
 
@@ -28,12 +28,18 @@ angular.module('codingBarrierApp').controller('blogController', function ($scope
         $scope.blog = "error";
     };
 
-    $scope.jumpBreak = function (post, index) {
-        var postArray = post.split("<a name='more'>");
-        return $scope.result = $sce.trustAsHtml(postArray[index]);
+    $scope.jumpBreak = function (post) {
+        var postBreak = post.split("<a name='more'>")[0];
+
+        SyntaxHighlighter.highlight();
+        var jText = $('<div/>').html(postBreak);
+        jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
+        jText.find("iframe").addClass('embed-responsive-item');
+        return $sce.trustAsHtml(jText.html());
+
     };
-    
-    $scope.extractPath = function (urlString){
+
+    $scope.extractPath = function (urlString) {
         var postUrl = new URL(urlString);
         return postUrl.pathname;
     };
