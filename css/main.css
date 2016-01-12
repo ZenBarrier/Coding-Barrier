@@ -134,6 +134,10 @@ h1.resumeSection{
     padding-top: 20px;
 }
 
+.center-block .img-responsive{
+    margin: 0 auto;
+}
+
 .right-block{
     background-color: #ccc;
     height: 100%;
