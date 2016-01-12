@@ -37,7 +37,6 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                     $rootScope.title = response.data.title + " | Blog";
                     $rootScope.header = response.data.title;
                     $rootScope.message = 'by ' + response.data.author.displayName;
-                    $rootScope.hasComments = true;
                     $rootScope.post = response.data;
                     console.log(response.data);
 
@@ -49,13 +48,22 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                                 this.page.url = response.data.url;
                             }
                         });
+                    } else {
+                        window.disqus_config = function () {
+                            this.page.url = response.data.url;
+                        };
+                        $.ajax({
+                            type: "GET",
+                            url: "//codingbarrier.disqus.com/embed.js",
+                            dataType: "script",
+                            cache: true
+                        });
                     }
                     ;
                 };
 
                 var blogRetrievedFail = function (response) {
                     $scope.post = "error";
-                    $rootScope.hasComments = false;
                     console.log(response);
 
                     if (response.status === 500) {

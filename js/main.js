@@ -35,7 +35,6 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
 
             .when('/blog/:year/:month/:postPath', {
                 title: 'Post | Blog',
-                hasComments: true,
                 templateUrl: 'pages/blogPost.html',
                 controller: 'blogPostController'
             })
@@ -51,7 +50,6 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
 codingBarrierApp.run(['$rootScope', function ($rootScope) {
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             $rootScope.title = current.title;
-            $rootScope.hasComments = current.hasComments;
         });
     }]);
 
