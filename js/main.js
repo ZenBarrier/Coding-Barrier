@@ -54,15 +54,15 @@ codingBarrierApp.run(['$rootScope', function ($rootScope) {
     }]);
 
 // create the controller and inject Angular's $scope
-codingBarrierApp.controller('mainController', function ($rootScope, $location) {
+codingBarrierApp.controller('mainController', function ($rootScope, $scope, $location, $timeout) {
 
     // create a message to display in our view
     $rootScope.header = 'Home Page';
     $rootScope.message = 'Coding Barrier under construction.';
     var fullUrl = $location.absUrl();
-    if(fullUrl.indexOf("anthonybarrera.com") > -1){
+    if (fullUrl.indexOf("anthonybarrera.com") > -1) {
         $rootScope.siteName = "Anthony Barrera";
-    }else{
+    } else {
         $rootScope.siteName = "Coding Barrier";
     }
 });
