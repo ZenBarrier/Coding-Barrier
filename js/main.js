@@ -1,4 +1,4 @@
-var codingBarrierApp = angular.module('codingBarrierApp', ['ngRoute', 'ngSanitize']);
+var codingBarrierApp = angular.module('codingBarrierApp', ['ngRoute', 'ngSanitize', 'ngAnimate']);
 
 // configure our routes
 codingBarrierApp.config(function ($routeProvider, $locationProvider) {
