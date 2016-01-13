@@ -26,6 +26,13 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'pages/contact.html',
                 controller: 'contactController'
             })
+            
+            // route for the contact page
+            .when('/projects', {
+                title: 'Projects',
+                templateUrl: 'pages/projects.html',
+                controller: 'projectsController'
+            })
 
             .when('/blog', {
                 title: 'Blog',
@@ -54,11 +61,14 @@ codingBarrierApp.run(['$rootScope', function ($rootScope) {
     }]);
 
 // create the controller and inject Angular's $scope
-codingBarrierApp.controller('mainController', function ($rootScope, $scope, $location, $timeout) {
+codingBarrierApp.controller('mainController', function ($rootScope, $scope, $location) {
 
     // create a message to display in our view
-    $rootScope.header = 'Home Page';
-    $rootScope.message = 'Coding Barrier under construction.';
+    var title = $rootScope.title;
+    if (typeof title !== 'undefined' && title.indexOf("Home") > -1) {
+        $rootScope.header = 'Home Page';
+        $rootScope.message = 'Coding Barrier under construction.';
+    }
     var fullUrl = $location.absUrl();
     if (fullUrl.indexOf("anthonybarrera.com") > -1) {
         $rootScope.siteName = "Anthony Barrera";
@@ -75,6 +85,11 @@ codingBarrierApp.controller('resumeController', function ($rootScope) {
 codingBarrierApp.controller('contactController', function ($rootScope) {
     $rootScope.header = 'Contact';
     $rootScope.message = 'This will be my contact page!';
+});
+
+codingBarrierApp.controller('projectsController', function ($rootScope) {
+    $rootScope.header = 'Projects';
+    $rootScope.message = '';
 });
 
 codingBarrierApp.controller('notFoundController', function ($rootScope) {
