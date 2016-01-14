@@ -66,7 +66,7 @@
             </nav>
         </header>
 
-        <div class="jumbotron text-center">
+        <div data-jumbo-loaded class="jumbotron text-center">
             <h1 ng-bind="header"></h1>
 
             <p ng-bind="message"></p>
@@ -75,7 +75,7 @@
 
             <div class="main row">
                 <div class="col-md-2 col-sm-4 left-wrap hidden-xs">
-                    <div class="left-block" data-spy="affix" data-offset-top='300'>
+                    <div class="left-block affic-block">
                         <p>hello world</p>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
 
                 </div>
                 <div class="col-md-2 right-wrap hidden-xs hidden-sm">
-                    <div class="right-block" data-spy="affix" data-offset-top='300'>
+                    <div class="right-block affic-block">
                     </div>
                 </div>
 
@@ -100,6 +100,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <script id="dsq-count-scr" src="//codingbarrier.disqus.com/count.js" async></script>
 
 
         <script src="js/plugins.js"></script>

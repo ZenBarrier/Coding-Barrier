@@ -26,12 +26,19 @@ codingBarrierApp.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'pages/contact.html',
                 controller: 'contactController'
             })
-            
+
             // route for the contact page
             .when('/projects', {
                 title: 'Projects',
                 templateUrl: 'pages/projects.html',
                 controller: 'projectsController'
+            })
+
+            // route for the contact page
+            .when('/projects/:name', {
+                title: 'Projects',
+                templateUrl: 'pages/projects.html',
+                controller: 'projectNameController'
             })
 
             .when('/blog', {
@@ -77,6 +84,27 @@ codingBarrierApp.controller('mainController', function ($rootScope, $scope, $loc
     }
 });
 
+codingBarrierApp.directive('jumboLoaded', function () {
+    return {
+        priority: Number.MIN_SAFE_INTEGER, // a low number so this directive loads after all other directives have loaded. 
+        restrict: "A", // attribute only
+        link: function postLink($scope, $element, $attributes) {
+
+
+            $scope.$watch('message', function () {
+                var jumboHeight = $('.jumbotron').outerHeight(true);
+                $(window).off('.affix')
+                $('.affic-block').removeData('bs.affix').removeClass('affix affix-top affix-bottom');
+                $('.affic-block').affix({
+                    offset: {
+                        top: jumboHeight
+                    }
+                });
+            });
+        }
+    };
+});
+
 codingBarrierApp.controller('resumeController', function ($rootScope) {
     $rootScope.header = 'Resume';
     $rootScope.message = 'Anthony Barrera';
@@ -87,12 +115,28 @@ codingBarrierApp.controller('contactController', function ($rootScope) {
     $rootScope.message = 'This will be my contact page!';
 });
 
+codingBarrierApp.controller('notFoundController', function ($rootScope) {
+    $rootScope.header = 'Page not Found';
+    $rootScope.message = 'Sorry, but the page you were trying to view does not exist.';
+});
+
 codingBarrierApp.controller('projectsController', function ($rootScope) {
     $rootScope.header = 'Projects';
     $rootScope.message = '';
 });
 
-codingBarrierApp.controller('notFoundController', function ($rootScope) {
-    $rootScope.header = 'Page not Found';
-    $rootScope.message = 'Sorry, but the page you were trying to view does not exist.';
-});
+codingBarrierApp.controller('projectNameController',
+        function ($rootScope, $routeParams, $window, $location) {
+            $rootScope.header = 'Projects';
+            $rootScope.message = '';
+            var proj = $routeParams.name;
+
+            switch (proj) {
+                case "faceblr":
+                    $window.location.href = 'https://chrome.google.com/webstore/detail/faceblr/jblofdhkclkhbcajdmfhklcgolfofbck';
+                    $location.replace();
+                    break;
+                default:
+                    break;
+            }
+        });

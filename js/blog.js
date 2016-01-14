@@ -8,7 +8,7 @@
 angular.module('codingBarrierApp').controller('blogController', function ($scope, $rootScope, $http, $sce) {
 
     $rootScope.header = 'Coding Barrier Blog';
-    $rootScope.message = 'This will be my blog page!';
+    $rootScope.message = '';
 
     $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts?key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
             .then(
