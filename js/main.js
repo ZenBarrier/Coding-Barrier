@@ -126,17 +126,7 @@ codingBarrierApp.controller('projectsController', function ($rootScope) {
 });
 
 codingBarrierApp.controller('projectNameController',
-        function ($rootScope, $routeParams, $window, $location) {
-            $rootScope.header = 'Projects';
-            $rootScope.message = '';
+        function ($routeParams, $window) {
             var proj = $routeParams.name;
-
-            switch (proj) {
-                case "faceblr":
-                    $window.location.href = 'https://chrome.google.com/webstore/detail/faceblr/jblofdhkclkhbcajdmfhklcgolfofbck';
-                    $location.replace();
-                    break;
-                default:
-                    break;
-            }
+            $window.location.href = '/projects/'+proj;
         });
