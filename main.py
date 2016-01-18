@@ -1,4 +1,5 @@
 #import os
+import contact
 import webapp2
 
 #class MainPage(webapp2.RequestHandler):
@@ -14,6 +15,7 @@ class ProjectRedirect(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
                               (r'/projects/(.*)', ProjectRedirect),
+                              (r'/mail/', contact.SendEmail),
                               #(r'/.*', MainPage),
                               ], debug=True)
 

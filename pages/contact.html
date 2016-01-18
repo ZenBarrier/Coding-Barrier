@@ -1,0 +1,32 @@
+<form class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-6">
+            <label for="inputName" class="control-label">Name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="form.name">
+        </div>
+        <div class="col-sm-6">
+            <label for="inputEmail" class="control-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="form.email">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label for="inputSubject" class="control-label">Subject</label>
+            <input type="text" class="form-control" id="inputSubject" placeholder="Subject" ng-model="form.subject">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label for="inputMessage" class="control-label">Message</label>
+            <textarea class="form-control" id="inputMessage" rows="5" ng-model="form.message"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <button type="submit" class="btn btn-warning btn-block" ng-click="clear()">Clear Form</button>
+        </div>
+        <div class="col-sm-9">
+            <button type="submit" class="btn btn-primary btn-block" ng-click="sendEmail()">Send Message</button>
+        </div>
+    </div>
+</form>

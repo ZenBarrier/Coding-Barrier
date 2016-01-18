@@ -110,11 +110,6 @@ codingBarrierApp.controller('resumeController', function ($rootScope) {
     $rootScope.message = 'Anthony Barrera';
 });
 
-codingBarrierApp.controller('contactController', function ($rootScope) {
-    $rootScope.header = 'Contact';
-    $rootScope.message = 'This will be my contact page!';
-});
-
 codingBarrierApp.controller('notFoundController', function ($rootScope) {
     $rootScope.header = 'Page not Found';
     $rootScope.message = 'Sorry, but the page you were trying to view does not exist.';
