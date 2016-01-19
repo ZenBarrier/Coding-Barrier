@@ -3,21 +3,18 @@ import webapp2
 
 class SendEmail(webapp2.RequestHandler):
     def post(self):
-        user_address = self.request.get("email_address")
+        user_name = self.request.get("name")
+        user_address = self.request.get("email")
+        subject = self.request.get("subject")
+        body = self.request.get("message")
+        behalf_of = user_name + " <" + user_address +">"
 
-        if not mail.is_email_valid(user_address):
-            # prompt user to enter a valid address
-            i = 0;
-
-        else:
-            confirmation_url = createNewUserConfirmation(self.request)
-            sender_address = "Contact Page <contact@codingbarrier.appspotmail.com>"
-            subject = "Contact page"
-            body = """
-Thank you for creating an account! Please confirm your email address by
-clicking on the link below:
-
-%s
-""" % confirmation_url
-
-            mail.send_mail(sender_address, user_address, subject, body)
+        sender_address ="CB Contact <contact@codingbarrier.appspotmail.com>"
+        
+        mail.send_mail(sender= sender_address,
+               to = "Anthony <anthony@codingbarrier.com>",
+               cc = behalf_of,
+               reply_to = behalf_of,
+               subject = subject+" | "+user_name+" | "+user_address,
+               body = body,
+               headers = {"On-Behalf-Of":behalf_of})
