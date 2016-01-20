@@ -1,8 +1,10 @@
 from google.appengine.api import mail
+import json
 import webapp2
 
 class SendEmail(webapp2.RequestHandler):
     def post(self):
+        to = self.request.get("to")
         user_name = self.request.get("name")
         user_address = self.request.get("email")
         subject = self.request.get("subject")
@@ -12,9 +14,10 @@ class SendEmail(webapp2.RequestHandler):
         sender_address ="CB Contact <contact@codingbarrier.appspotmail.com>"
         
         mail.send_mail(sender= sender_address,
-               to = "Anthony <anthony@codingbarrier.com>",
+               to = to,
                cc = behalf_of,
                reply_to = behalf_of,
                subject = subject+" | "+user_name+" | "+user_address,
                body = body,
                headers = {"On-Behalf-Of":behalf_of})
+        self.response.out.write(json.dumps({"done":"true"}))
