@@ -1,32 +1,73 @@
-<form class="form-horizontal">
+<form class="form-horizontal" name="form" novalidate ng-submit="form.$valid && sendEmail()">
     <div class="form-group">
-        <div class="col-sm-6">
+        <div class="col-sm-6 has-feedback" 
+             ng-class="{'has-error':form.uName.$invalid && (form.uName.$touched || form.$submitted),
+                    'has-success':form.uName.$valid && form.uName.$touched}">
             <label for="inputName" class="control-label">Name</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="form.name">
+            <input type="text" class="form-control" 
+                   id="inputName" name="uName" placeholder="Name" ng-model="user.name" required="">
+            <span class="form-control-feedback" aria-hidden="true"
+                  ng-show="form.$submitted || form.uName.$touched">
+                <i class="fa" ng-class="form.uName.$error.required ? 'fa-times' : 'fa-check'"></i>
+            </span>
+            <div ng-show="form.$submitted || form.uName.$touched" class="help-block">
+                <div ng-show="form.uName.$error.required">Tell us your name.</div>
+            </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 has-feedback" 
+             ng-class="{'has-error':form.uEmail.$invalid && (form.uEmail.$touched || form.$submitted),
+                     'has-success':form.uEmail.$valid && form.uEmail.$touched}">
             <label for="inputEmail" class="control-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="form.email">
+            <input type="email" class="form-control" name="uEmail" 
+                   id="inputEmail" placeholder="Email" ng-model="user.email" required="">
+            <span class="form-control-feedback" aria-hidden="true"
+                  ng-show="form.$submitted || form.uEmail.$touched">
+                <i class="fa" ng-class="form.uEmail.$error.required ? 'fa-times' : 'fa-check'"></i>
+            </span>
+            <div ng-show="form.$submitted || form.uEmail.$touched" class="help-block">
+                <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+                <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+            </div>
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-12">
+        <div class="col-sm-12 has-feedback"
+             ng-class="{'has-success':form.uSubject.$touched && user.subject.length,
+                 'has-warning':!user.subject.length && (form.uSubject.$touched || form.$submitted)}">
             <label for="inputSubject" class="control-label">Subject</label>
-            <input type="text" class="form-control" id="inputSubject" placeholder="Subject" ng-model="form.subject">
+            <input type="text" class="form-control" name="uSubject"
+                   id="inputSubject" placeholder="Subject" ng-model="user.subject">
+            <span class="form-control-feedback" aria-hidden="true"
+                  ng-show="form.$submitted || form.uSubject.$touched">
+                <i class="fa" ng-class="!user.subject.length ? 'fa-warning' : 'fa-check'"></i>
+            </span>
+            <div ng-show="form.$submitted || form.uSubject.$touched" class="help-block">
+                <span ng-show="!user.subject.length">A subject would be nice, but not needed.</span>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-sm-12">
+    <div class="form-group" 
+         ng-class="{'has-error':form.uBody.$invalid && (form.uBody.$touched || form.$submitted), 
+             'has-success':form.uBody.$valid && form.uBody.$touched}">
+        <div class="col-sm-12 has-feedback">
             <label for="inputMessage" class="control-label">Message</label>
-            <textarea class="form-control" id="inputMessage" rows="5" ng-model="form.message"></textarea>
+            <textarea class="form-control" name="uBody" placeholder="Message"
+                      id="inputMessage" rows="5" ng-model="user.message" required=""></textarea>
+            <span class="form-control-feedback" aria-hidden="true"
+                  ng-show="form.$submitted || form.uBody.$touched">
+                <i class="fa" ng-class="form.uBody.$error.required ? 'fa-times' : 'fa-check'"></i>
+            </span>
+            <div ng-show="form.$submitted || form.uBody.$touched" class="help-block">
+                <span ng-show="form.uBody.$error.required">Please write a message.</span>
+            </div>
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-3">
-            <button type="submit" class="btn btn-warning btn-block" ng-click="clear()">Clear Form</button>
+        <div class="col-xs-5 col-sm-3">
+            <button type="button" class="btn btn-warning btn-block" ng-click="clear(form)">Clear Form</button>
         </div>
-        <div class="col-sm-9">
-            <button type="submit" class="btn btn-primary btn-block" ng-click="sendEmail()">Send Message</button>
+        <div class="col-xs-7 col-sm-9">
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
         </div>
     </div>
 </form>
