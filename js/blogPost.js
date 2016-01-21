@@ -6,7 +6,7 @@
 
 
 angular.module('codingBarrierApp').controller('blogPostController',
-        function ($rootScope, $http, $location, $routeParams, $window, $sce) {
+        function ($rootScope, $location, $routeParams, $window, $sce, BloggerApi) {
             var blogPost = this;
             var getCount = 0;
             var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
@@ -23,10 +23,7 @@ angular.module('codingBarrierApp').controller('blogPostController',
             getPost();
 
             function getPost() {
-
-                $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts/\n\
-bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
-                        .then(
+                BloggerApi.getBlogPost(path).then(
                                 function (response) {
                                     blogRetrievedSuccess(response);
                                 },

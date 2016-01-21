@@ -9,6 +9,10 @@ CodingBarrierService.factory('BloggerApi' , ['$http', function ($http) {
     BloggerApi.getBlog = function () {
         return $http.get(urlBase+'?'+apiKey);
     };
+    
+    BloggerApi.getBlogPost = function (path) {
+        return $http.get(urlBase+'/bypath?path=/'+path+'&'+apiKey);
+    };
 
     return BloggerApi;
 
