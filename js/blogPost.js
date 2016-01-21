@@ -6,13 +6,13 @@
 
 
 angular.module('codingBarrierApp').controller('blogPostController',
-        function ($rootScope, $location, $routeParams, $window, $sce, BloggerApi) {
+        function ($rootScope, $location, $routeParams, $window, $sce, BloggerApi, DisqusApi) {
             var blogPost = this;
             var getCount = 0;
             var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
 
             blogPost.trustHtml = function (htmlString) {
-                SyntaxHighlighter.highlight();
+                window.SyntaxHighlighter.highlight();
                 var jText = $('<div/>').html(htmlString);
                 jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
                 jText.find("iframe").addClass('embed-responsive-item');
@@ -39,27 +39,8 @@ angular.module('codingBarrierApp').controller('blogPostController',
                     $rootScope.message = 'by ' + response.data.author.displayName;
                     $rootScope.post = response.data;
                     console.log(response.data);
-
-                    if (typeof DISQUS !== 'undefined') {
-                        DISQUS.reset({
-                            reload: true,
-                            config: function () {
-                                //this.page.identifier = response.data.id;
-                                this.page.url = response.data.url;
-                            }
-                        });
-                    } else {
-                        window.disqus_config = function () {
-                            this.page.url = response.data.url;
-                        };
-                        $.ajax({
-                            type: "GET",
-                            url: "//codingbarrier.disqus.com/embed.js",
-                            dataType: "script",
-                            cache: true
-                        });
-                    }
-                    ;
+                    
+                    DisqusApi.getComments(response.data.url);
                 };
 
                 var blogRetrievedFail = function (response) {
