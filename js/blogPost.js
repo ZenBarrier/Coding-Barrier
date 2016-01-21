@@ -6,11 +6,12 @@
 
 
 angular.module('codingBarrierApp').controller('blogPostController',
-        function ($rootScope, $scope, $http, $location, $routeParams, $window, $sce) {
+        function ($rootScope, $http, $location, $routeParams, $window, $sce) {
+            var blogPost = this;
             var getCount = 0;
             var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
 
-            $scope.trustHtml = function (htmlString) {
+            blogPost.trustHtml = function (htmlString) {
                 SyntaxHighlighter.highlight();
                 var jText = $('<div/>').html(htmlString);
                 jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
@@ -18,8 +19,10 @@ angular.module('codingBarrierApp').controller('blogPostController',
                 jText.find("img").addClass('img-responsive');
                 return $sce.trustAsHtml(jText.html());
             };
+            
+            getPost();
 
-            $scope.getPost = function () {
+            function getPost() {
 
                 $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts/\n\
 bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
@@ -32,8 +35,8 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                                 });
 
                 var blogRetrievedSuccess = function (response) {
-                    $scope.post = response.data;
-                    $scope.disqus = 'pages/disqusModule.html';
+                    blogPost.post = response.data;
+                    blogPost.disqus = 'pages/disqusModule.html';
                     $rootScope.title = response.data.title + " | Blog";
                     $rootScope.header = response.data.title;
                     $rootScope.message = 'by ' + response.data.author.displayName;
@@ -63,13 +66,13 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                 };
 
                 var blogRetrievedFail = function (response) {
-                    $scope.post = "error";
+                    blogPost.post = "error";
                     console.log(response);
 
                     if (response.status === 500) {
                         if (getCount < 3) {
                             getCount++;
-                            $scope.getPost();
+                            getPost();
                         } else {
                             $window.location.href = 'http://blog.codingbarrier.com/' + path;
                             $location.replace();
@@ -82,5 +85,4 @@ bypath?path=/" + path + "&key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
                     }
                 };
             };
-            $scope.getPost();
         });

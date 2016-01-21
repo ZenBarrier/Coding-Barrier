@@ -51,7 +51,8 @@
                 .when('/blog/:year/:month/:postPath', {
                     title: 'Post | Blog',
                     templateUrl: 'pages/blogPost.html',
-                    controller: 'blogPostController'
+                    controller: 'blogPostController',
+                    controllerAs: 'blogPost'
                 })
 
                 .otherwise({
