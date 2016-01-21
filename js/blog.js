@@ -5,43 +5,48 @@
  */
 
 
-angular.module('codingBarrierApp').controller('blogController', function ($scope, $rootScope, $http, $sce) {
+angular.module('codingBarrierApp')
+        .controller('blogController', function ($scope, $rootScope, $http, $sce, BloggerApi) {
 
-    $rootScope.header = 'Coding Barrier Blog';
-    $rootScope.message = '';
+            $rootScope.header = 'Coding Barrier Blog';
+            $rootScope.message = '';
 
-    $http.get("https://www.googleapis.com/blogger/v3/blogs/4379869744446220679/posts?key=AIzaSyBe8zrqjTGEj92YfFvqEc4Yt993QW0q0cA")
-            .then(
-                    function (response) {
-                        blogRetrievedSuccess(response);
-                    },
-                    function (response) {
-                        blogRetrievedFail(response);
-                    });
+            getBlog();
 
-    var blogRetrievedSuccess = function (response) {
-        $scope.blog = response.data.items;
-        console.log(response.data.items);
-    };
+            function getBlog() {
+                BloggerApi.getBlog()
+                        .then(
+                                function (response) {
+                                    blogRetrievedSuccess(response);
+                                },
+                                function (response) {
+                                    blogRetrievedFail(response);
+                                });
+            };
 
-    var blogRetrievedFail = function (response) {
-        $scope.blog = "error";
-    };
+            var blogRetrievedSuccess = function (response) {
+                $scope.blog = response.data.items;
+                console.log(response.data.items);
+            };
 
-    $scope.jumpBreak = function (post) {
-        var postBreak = post.split("<a name='more'>")[0];
+            var blogRetrievedFail = function (response) {
+                $scope.blog = "error";
+            };
 
-        SyntaxHighlighter.highlight();
-        var jText = $('<div/>').html(postBreak);
-        jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
-        jText.find("iframe").addClass('embed-responsive-item');
-        jText.find("img").addClass('img-responsive');
-        return $sce.trustAsHtml(jText.html());
+            $scope.jumpBreak = function (post) {
+                var postBreak = post.split("<a name='more'>")[0];
 
-    };
+                SyntaxHighlighter.highlight();
+                var jText = $('<div/>').html(postBreak);
+                jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
+                jText.find("iframe").addClass('embed-responsive-item');
+                jText.find("img").addClass('img-responsive');
+                return $sce.trustAsHtml(jText.html());
 
-    $scope.extractPath = function (urlString) {
-        var postUrl = new URL(urlString);
-        return postUrl.pathname;
-    };
-});
+            };
+
+            $scope.extractPath = function (urlString) {
+                var postUrl = new URL(urlString);
+                return postUrl.pathname;
+            };
+        });
