@@ -1,27 +1,28 @@
 
-angular.module('codingBarrierApp').controller('contactController', function ($rootScope, $scope, $http) {
+angular.module('codingBarrierApp').controller('contactController', function ($rootScope, $http) {
     $rootScope.header = 'Contact';
     $rootScope.message = 'This will be my contact page!';
+    var contact = this;
 
-    $scope.clear = function (form) {
+    contact.clear = function (form) {
         if (form) {
             form.$setPristine();
             form.$setUntouched();
         }
-        $scope.user = {};
+        contact.user = {};
     };
 
-    $scope.sendEmail = function () {
+    contact.sendEmail = function () {
         if ($rootScope.siteName.indexOf("Coding") > 0) {
-            $scope.user.to="Anthony B <anthony@codingbarrier.com>";
+            contact.user.to="Anthony B <anthony@codingbarrier.com>";
         } else {
-            $scope.user.to="Anthony B <mail@anthonybarrera.com>";
+            contact.user.to="Anthony B <mail@anthonybarrera.com>";
         }
-        console.log($.param($scope.user));
+        console.log($.param(contact.user));
         $http({
             method: 'POST',
             url: '/mail/',
-            data: $.param($scope.user), // pass in data as strings
+            data: $.param(contact.user), // pass in data as strings
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
                 .success(function () {
@@ -29,5 +30,5 @@ angular.module('codingBarrierApp').controller('contactController', function ($ro
                 });
     };
 
-    $scope.clear();
+    contact.clear();
 });

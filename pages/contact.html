@@ -1,11 +1,11 @@
-<form class="form-horizontal" name="form" novalidate ng-submit="form.$valid && sendEmail()">
+<form class="form-horizontal" name="form" novalidate ng-submit="form.$valid && contact.sendEmail()">
     <div class="form-group">
         <div class="col-sm-6 has-feedback" 
              ng-class="{'has-error':form.uName.$invalid && (form.uName.$touched || form.$submitted),
                     'has-success':form.uName.$valid && form.uName.$touched}">
             <label for="inputName" class="control-label">Name</label>
             <input type="text" class="form-control" 
-                   id="inputName" name="uName" placeholder="Name" ng-model="user.name" required="">
+                   id="inputName" name="uName" placeholder="Name" ng-model="contact.user.name" required="">
             <span class="form-control-feedback" aria-hidden="true"
                   ng-show="form.$submitted || form.uName.$touched">
                 <i class="fa" ng-class="form.uName.$error.required ? 'fa-times' : 'fa-check'"></i>
@@ -19,7 +19,7 @@
                      'has-success':form.uEmail.$valid && form.uEmail.$touched}">
             <label for="inputEmail" class="control-label">Email</label>
             <input type="email" class="form-control" name="uEmail" 
-                   id="inputEmail" placeholder="Email" ng-model="user.email" required="">
+                   id="inputEmail" placeholder="Email" ng-model="contact.user.email" required="">
             <span class="form-control-feedback" aria-hidden="true"
                   ng-show="form.$submitted || form.uEmail.$touched">
                 <i class="fa" ng-class="form.uEmail.$error.required ? 'fa-times' : 'fa-check'"></i>
@@ -32,14 +32,14 @@
     </div>
     <div class="form-group">
         <div class="col-sm-12 has-feedback"
-             ng-class="{'has-success':form.uSubject.$touched && user.subject.length,
-                 'has-warning':!user.subject.length && (form.uSubject.$touched || form.$submitted)}">
+             ng-class="{'has-success':form.uSubject.$touched && contact.user.subject.length,
+                 'has-warning':!contact.user.subject.length && (form.uSubject.$touched || form.$submitted)}">
             <label for="inputSubject" class="control-label">Subject</label>
             <input type="text" class="form-control" name="uSubject"
-                   id="inputSubject" placeholder="Subject" ng-model="user.subject">
+                   id="inputSubject" placeholder="Subject" ng-model="contact.user.subject">
             <span class="form-control-feedback" aria-hidden="true"
                   ng-show="form.$submitted || form.uSubject.$touched">
-                <i class="fa" ng-class="!user.subject.length ? 'fa-warning' : 'fa-check'"></i>
+                <i class="fa" ng-class="!contact.user.subject.length ? 'fa-warning' : 'fa-check'"></i>
             </span>
             <div ng-show="form.$submitted || form.uSubject.$touched" class="help-block">
                 <span ng-show="!user.subject.length">A subject would be nice, but not needed.</span>
@@ -52,7 +52,7 @@
         <div class="col-sm-12 has-feedback">
             <label for="inputMessage" class="control-label">Message</label>
             <textarea class="form-control" name="uBody" placeholder="Message"
-                      id="inputMessage" rows="5" ng-model="user.message" required=""></textarea>
+                      id="inputMessage" rows="5" ng-model="contact.user.message" required=""></textarea>
             <span class="form-control-feedback" aria-hidden="true"
                   ng-show="form.$submitted || form.uBody.$touched">
                 <i class="fa" ng-class="form.uBody.$error.required ? 'fa-times' : 'fa-check'"></i>
@@ -64,7 +64,7 @@
     </div>
     <div class="form-group">
         <div class="col-xs-5 col-sm-3">
-            <button type="button" class="btn btn-warning btn-block" ng-click="clear(form)">Clear Form</button>
+            <button type="button" class="btn btn-warning btn-block" ng-click="contact.clear(form)">Clear Form</button>
         </div>
         <div class="col-xs-7 col-sm-9">
             <button type="submit" class="btn btn-primary btn-block">Send Message</button>

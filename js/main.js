@@ -25,7 +25,8 @@
                 .when('/contact', {
                     title: 'Contact',
                     templateUrl: 'pages/contact.html',
-                    controller: 'contactController'
+                    controller: 'contactController',
+                    controllerAs: 'contact'
                 })
 
                 // route for the contact page
