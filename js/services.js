@@ -58,7 +58,7 @@ CodingBarrierService.factory('MailBoxApi', ['$http', function ($http) {
         var format = '&format=1';
         var MailBoxApi = {};
 
-        MailBoxApi.getBlog = function (email) {
+        MailBoxApi.validateEmail = function (email) {
             return $http.get(urlBase + apiKey + email + apiKey + smpt +format);
         };
 
@@ -72,7 +72,7 @@ CodingBarrierService.factory('MailServerApi', ['$http', function ($http) {
         var contentType = 'application/x-www-form-urlencoded';
         var MailServerApi = {};
 
-        MailServerApi.getBlog = function (user) {
+        MailServerApi.sendMail = function (user) {
             return $http({
             method: 'POST',
             url: urlBase,
