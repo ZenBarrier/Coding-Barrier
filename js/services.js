@@ -59,7 +59,7 @@ CodingBarrierService.factory('MailBoxApi', ['$http', function ($http) {
         var MailBoxApi = {};
 
         MailBoxApi.validateEmail = function (email) {
-            return $http.get(urlBase + apiKey + email + apiKey + smpt +format);
+            return $http.get(urlBase + apiKey + '&email=' + email + smpt + format);
         };
 
         return MailBoxApi;
