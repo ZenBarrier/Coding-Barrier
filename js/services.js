@@ -65,3 +65,22 @@ CodingBarrierService.factory('MailBoxApi', ['$http', function ($http) {
         return MailBoxApi;
 
     }]);
+
+CodingBarrierService.factory('MailServerApi', ['$http', function ($http) {
+
+        var urlBase = '/mail/';
+        var contentType = 'application/x-www-form-urlencoded';
+        var MailServerApi = {};
+
+        MailServerApi.getBlog = function (user) {
+            return $http({
+            method: 'POST',
+            url: urlBase,
+            data: $.param(user),
+            headers: {'Content-Type': contentType}
+        });
+        };
+
+        return MailServerApi;
+
+    }]);
