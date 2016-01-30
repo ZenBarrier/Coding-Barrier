@@ -6,7 +6,7 @@
 
 
 angular.module('codingBarrierApp')
-        .controller('blogController', function ($scope, $rootScope, $http, $sce, BloggerApi) {
+        .controller('blogController', function ($scope, $rootScope, $sce, BloggerApi) {
 
             $rootScope.header = 'Coding Barrier Blog';
             $rootScope.message = '';
@@ -36,7 +36,7 @@ angular.module('codingBarrierApp')
             $scope.jumpBreak = function (post) {
                 var postBreak = post.split("<a name='more'>")[0];
 
-                SyntaxHighlighter.highlight();
+                window.SyntaxHighlighter.highlight();
                 var jText = $('<div/>').html(postBreak);
                 jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
                 jText.find("iframe").addClass('embed-responsive-item');
