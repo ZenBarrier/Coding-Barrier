@@ -15,23 +15,19 @@ angular.module('codingBarrierApp')
 
             function getBlog() {
                 BloggerApi.getBlog()
-                        .then(
-                                function (response) {
-                                    blogRetrievedSuccess(response);
-                                },
-                                function (response) {
-                                    blogRetrievedFail(response);
-                                });
-            };
+                        .then(blogRetrievedSuccess, blogRetrievedFail);
+            }
 
-            var blogRetrievedSuccess = function (response) {
+
+            function blogRetrievedSuccess(response) {
                 $scope.blog = response.data.items;
                 console.log(response.data.items);
-            };
+            }
 
-            var blogRetrievedFail = function (response) {
-                $scope.blog = "error";
-            };
+            function blogRetrievedFail(response) {
+                
+            }
+
 
             $scope.jumpBreak = function (post) {
                 var postBreak = post.split("<a name='more'>")[0];
