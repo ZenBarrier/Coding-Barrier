@@ -11,14 +11,16 @@
                 .when('/', {
                     title: 'Home',
                     templateUrl: 'pages/home.html',
-                    controller: 'homeController'
+                    controller: 'homeController',
+                    controllerAs: 'home'
                 })
 
                 // route for the about page
                 .when('/resume', {
                     title: 'Resume',
                     templateUrl: 'pages/resume.html',
-                    controller: 'resumeController'
+                    controller: 'resumeController',
+                    controllerAs: 'resume'
                 })
 
                 // route for the contact page
@@ -33,7 +35,8 @@
                 .when('/projects', {
                     title: 'Projects',
                     templateUrl: 'pages/projects.html',
-                    controller: 'projectsController'
+                    controller: 'projectsController',
+                    controllerAs: 'project'
                 })
 
                 // route for the contact page
@@ -60,7 +63,8 @@
                 .otherwise({
                     title: '404',
                     templateUrl: 'pages/404.html',
-                    controller: 'notFoundController'
+                    controller: 'notFoundController',
+                    controllerAs: 'notFound'
                 });
 
     });
@@ -105,21 +109,25 @@
     codingBarrierApp.controller('homeController', function ($rootScope) {
         $rootScope.header = 'Home';
         $rootScope.message = 'Anthony Barrera';
+        var home = this;
     });
 
     codingBarrierApp.controller('resumeController', function ($rootScope) {
         $rootScope.header = 'Resume';
         $rootScope.message = 'Anthony Barrera';
+        var resume = this;
     });
 
     codingBarrierApp.controller('notFoundController', function ($rootScope) {
         $rootScope.header = 'Page not Found';
         $rootScope.message = 'Sorry, but the page you were trying to view does not exist.';
+        var notFound = this;
     });
 
     codingBarrierApp.controller('projectsController', function ($rootScope) {
         $rootScope.header = 'Projects';
         $rootScope.message = '';
+        var project = this;
     });
 
     codingBarrierApp.controller('projectNameController',
