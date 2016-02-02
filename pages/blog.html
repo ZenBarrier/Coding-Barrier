@@ -2,13 +2,13 @@
 
 
 <div class="row">
-    <div ng-repeat="post in blog" class="col-md-6 col-xs-12">
+    <div ng-repeat="post in blogPage.blog" class="col-md-6 col-xs-12">
         <div class="page-header">
-            <h1><a href="/blog{{extractPath(post.url)}}">{{post.title}}</a>
+            <h1><a href="/blog{{blogPage.extractPath(post.url)}}">{{post.title}}</a>
                 <small>By {{post.author.displayName}}</small>
             </h1>
         </div>
-        <div ng-bind-html="jumpBreak(post.content)"></div>
+        <div ng-bind-html="blogPage.jumpBreak(post.content)"></div>
         <span class="disqus-comment-count" data-disqus-url="{{post.url}}"></span>
     </div>
 </div>

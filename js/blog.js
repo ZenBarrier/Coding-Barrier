@@ -6,10 +6,11 @@
 
 
 angular.module('codingBarrierApp')
-        .controller('blogController', function ($scope, $rootScope, $sce, BloggerApi) {
+        .controller('blogController', function ($rootScope, $sce, BloggerApi) {
 
             $rootScope.header = 'Coding Barrier Blog';
             $rootScope.message = '';
+            var blogPage = this;
 
             getBlog();
 
@@ -20,7 +21,7 @@ angular.module('codingBarrierApp')
 
 
             function blogRetrievedSuccess(response) {
-                $scope.blog = response.data.items;
+                blogPage.blog = response.data.items;
                 console.log(response.data.items);
             }
 
@@ -29,7 +30,7 @@ angular.module('codingBarrierApp')
             }
 
 
-            $scope.jumpBreak = function (post) {
+            blogPage.jumpBreak = function (post) {
                 var postBreak = post.split("<a name='more'>")[0];
 
                 window.SyntaxHighlighter.highlight();
@@ -41,7 +42,7 @@ angular.module('codingBarrierApp')
 
             };
 
-            $scope.extractPath = function (urlString) {
+            blogPage.extractPath = function (urlString) {
                 var postUrl = new URL(urlString);
                 return postUrl.pathname;
             };

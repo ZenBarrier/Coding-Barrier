@@ -46,7 +46,8 @@
                 .when('/blog', {
                     title: 'Blog',
                     templateUrl: 'pages/blog.html',
-                    controller: 'blogController'
+                    controller: 'blogController',
+                    controllerAs: 'blogPage'
                 })
 
                 .when('/blog/:year/:month/:postPath', {
