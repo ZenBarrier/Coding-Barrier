@@ -11,7 +11,7 @@
                 .when('/', {
                     title: 'Home',
                     templateUrl: 'pages/home.html',
-                    controller: 'mainController'
+                    controller: 'homeController'
                 })
 
                 // route for the about page
@@ -73,13 +73,6 @@
 
 // create the controller and inject Angular's $scope
     codingBarrierApp.controller('mainController', function ($rootScope, $scope, $location) {
-
-        // create a message to display in our view
-        var title = $rootScope.title;
-        if (typeof title !== 'undefined' && title.indexOf("Home") > -1) {
-            $rootScope.header = 'Home Page';
-            $rootScope.message = 'Coding Barrier under construction.';
-        }
         var fullUrl = $location.absUrl();
         if (fullUrl.indexOf("anthonybarrera.com") > -1) {
             $rootScope.siteName = "Anthony Barrera";
@@ -107,6 +100,11 @@
                 });
             }
         };
+    });
+    
+    codingBarrierApp.controller('homeController', function ($rootScope) {
+        $rootScope.header = 'Home';
+        $rootScope.message = 'Anthony Barrera';
     });
 
     codingBarrierApp.controller('resumeController', function ($rootScope) {
