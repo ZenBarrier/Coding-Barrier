@@ -85,27 +85,6 @@
         }
     });
 
-    codingBarrierApp.directive('jumboLoaded', function () {
-        return {
-            priority: Number.MIN_SAFE_INTEGER, // a low number so this directive loads after all other directives have loaded. 
-            restrict: "A", // attribute only
-            link: function postLink($scope, $element, $attributes) {
-
-
-                $scope.$watch('message', function () {
-                    var jumboHeight = $('.jumbotron').outerHeight(true);
-                    $(window).off('.affix');
-                    $('.affic-block').removeData('bs.affix').removeClass('affix affix-top affix-bottom');
-                    $('.affic-block').affix({
-                        offset: {
-                            top: jumboHeight
-                        }
-                    });
-                });
-            }
-        };
-    });
-    
     codingBarrierApp.controller('homeController', function ($rootScope) {
         $rootScope.header = 'Home';
         $rootScope.message = 'Anthony Barrera';
@@ -135,4 +114,12 @@
                 var proj = $routeParams.name;
                 $window.location.href = '/projects/' + proj;
             });
+
+    $('.affic-block').affix({
+        offset: {
+            top: function () {
+                return $('.jumbotron').outerHeight(true);
+            }
+        }
+    });
 })();
