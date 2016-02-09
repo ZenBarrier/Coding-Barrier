@@ -15,7 +15,7 @@ class SendEmail(webapp2.RequestHandler):
         
         mail.send_mail(sender= sender_address,
                to = to,
-               cc = behalf_of,
+               #cc = behalf_of,
                reply_to = behalf_of,
                subject = subject+" | "+user_name+" | "+user_address,
                body = body,
