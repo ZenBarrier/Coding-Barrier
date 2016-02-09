@@ -151,7 +151,9 @@ h1.resumeSection{
     width: inherit;
     padding: inherit;
 }
-
+.help-block{
+    margin: 0px;
+}
 
 
 
