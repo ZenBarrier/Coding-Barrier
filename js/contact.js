@@ -54,6 +54,8 @@ angular.module('codingBarrierApp').controller('contactController', function ($ro
 
     contact.evaluateEmail = function () {
         if (contact.trust) {
+            contact.modalHeader = 'Thank You';
+            contact.modalBody = 'We have sent your message.';
             sendEmail();
         } else {
             contact.meant = '';

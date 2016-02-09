@@ -95,6 +95,7 @@
                     </div>
                 </div>
                 <div ng-if="!contact.meant.length && contact.invalid">
+                    <label for="inputEmailFix" class="control-label">Please enter another email</label>
                     <input type="email" class="form-control" 
                            id="inputEmailFix" placeholder="Email" ng-model="contact.user.email" required="">
                 </div>
