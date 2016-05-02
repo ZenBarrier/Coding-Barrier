@@ -13,6 +13,10 @@ class SendEmail(webapp2.RequestHandler):
 
         sender_address ="CB Contact <contact@codingbarrier.appspotmail.com>"
         
+        if "codingbarrier" not in to:
+            if "anthonybarrera" not in to:
+                return
+        
         mail.send_mail(sender= sender_address,
                to = to,
                #cc = behalf_of,
