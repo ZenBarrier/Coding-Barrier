@@ -52,7 +52,7 @@ angular.module('codingBarrierApp').controller('blogPostController',
                             getCount++;
                             getPost();
                         } else {
-                            $window.location.href = 'http://blog.codingbarrier.com/' + path;
+                            $window.location.href = 'http://blog.codebarrier.com/' + path;
                             $location.replace();
                         }
                     }

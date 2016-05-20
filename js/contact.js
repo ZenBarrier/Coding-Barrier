@@ -13,8 +13,8 @@ angular.module('codingBarrierApp').controller('contactController', function ($ro
     };
 
     contact.checkEmail = function () {
-        if ($rootScope.siteName.indexOf("Coding") > 0) {
-            contact.user.to = "Anthony B <anthony@codingbarrier.com>";
+        if ($rootScope.siteName.indexOf("Code") > 0) {
+            contact.user.to = "Anthony B <anthony@codebarrier.com>";
         } else {
             contact.user.to = "Anthony B <mail@anthonybarrera.com>";
         }

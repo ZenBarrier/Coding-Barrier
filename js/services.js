@@ -21,7 +21,7 @@ CodingBarrierService.factory('BloggerApi', ['$http', function ($http) {
 
 CodingBarrierService.factory('DisqusApi', ['$http', function () {
 
-        var urlBase = "//codingbarrier.disqus.com/embed.js";
+        var urlBase = "//codebarrier.disqus.com/embed.js";
         var DisqusApi = {};
 
         DisqusApi.getComments = function (postUrl) {

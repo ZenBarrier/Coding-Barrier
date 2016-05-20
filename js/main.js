@@ -81,7 +81,7 @@
         if (fullUrl.indexOf("anthonybarrera.com") > -1) {
             $rootScope.siteName = "Anthony Barrera";
         } else {
-            $rootScope.siteName = "Coding Barrier";
+            $rootScope.siteName = "Code Barrier";
         }
     });
 
