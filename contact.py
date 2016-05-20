@@ -13,7 +13,7 @@ class SendEmail(webapp2.RequestHandler):
 
         sender_address ="CB Contact <contact@codingbarrier.appspotmail.com>"
         
-        if "<anthony@codingbarrier.com>" not in to:
+        if "<anthony@codebarrier.com>" not in to:
             if "<mail@anthonybarrera.com>" not in to:
                 return
         
