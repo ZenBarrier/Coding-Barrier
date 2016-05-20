@@ -12,7 +12,7 @@ angular.module('codingBarrierApp').controller('blogPostController',
             var path = $routeParams.year + '/' + $routeParams.month + '/' + $routeParams.postPath;
 
             blogPost.trustHtml = function (htmlString) {
-                window.SyntaxHighlighter.highlight();
+                window.Prism.highlightAll();
                 var jText = $('<div/>').html(htmlString);
                 jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
                 jText.find("iframe").addClass('embed-responsive-item');

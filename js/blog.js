@@ -33,7 +33,7 @@ angular.module('codingBarrierApp')
             blogPage.jumpBreak = function (post) {
                 var postBreak = post.split("<a name='more'>")[0];
 
-                window.SyntaxHighlighter.highlight();
+                window.Prism.highlightAll();
                 var jText = $('<div/>').html(postBreak);
                 jText.find("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
                 jText.find("iframe").addClass('embed-responsive-item');
