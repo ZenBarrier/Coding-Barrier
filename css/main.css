@@ -155,6 +155,13 @@ h1.resumeSection{
     margin: 0px;
 }
 
+.proj:nth-child(even){
+    background-color: #efefef;
+}
+.thumbnail{
+    background-color: transparent;
+    border-color: transparent;
+}
 
 
 /* ==========================================================================
