@@ -23,4 +23,5 @@ def project_links(project):
     return {
         "faceblr": "https://chrome.google.com/webstore/detail/faceblr/jblofdhkclkhbcajdmfhklcgolfofbck",
         "wearfull": "https://play.google.com/store/apps/details?id=com.zenbarrier.wearfull",
+        "betonblack": "https://play.google.com/store/apps/details?id=com.zenbarrier.betonblack",
     }.get(project, "/projects")
