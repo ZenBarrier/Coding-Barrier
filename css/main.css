@@ -110,10 +110,11 @@ h1.resumeSection{
 
 .jumbotron{
     background-size: contain;
-    background-color: #ffffff;
     overflow: hidden;
     position: relative;
     margin-bottom: 0px;
+    z-index: 101;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .main{
@@ -121,7 +122,7 @@ h1.resumeSection{
 }
 
 .left-block{
-    background-color: #ccc;
+    background-color: #eee;
     height: 100%;
 }
 .left-wrap, .right-wrap{
@@ -137,7 +138,7 @@ h1.resumeSection{
 }
 
 .right-block{
-    background-color: #ccc;
+    background-color: #eee;
     height: 100%;
 }
 #main{
