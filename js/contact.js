@@ -1,7 +1,7 @@
 
 angular.module('codingBarrierApp').controller('contactController', function ($rootScope, MailBoxApi, MailServerApi) {
     $rootScope.header = 'Contact';
-    $rootScope.message = 'This will be my contact page!';
+    $rootScope.message = '';
     var contact = this;
 
     contact.clear = function (form) {
