@@ -87,7 +87,7 @@
 
     codingBarrierApp.controller('homeController', function ($rootScope) {
         $rootScope.header = 'Home';
-        $rootScope.message = 'Anthony Barrera';
+        $rootScope.message = '';
         var home = this;
     });
 
