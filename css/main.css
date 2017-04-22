@@ -109,10 +109,8 @@ h1.resumeSection{
 }
 
 .jumbotron{
-    background: #000 url("/tile-wide.png") center center;
-    color: #d8d8d8;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     background-size: contain;
+    background-color: #ffffff;
     overflow: hidden;
     position: relative;
     margin-bottom: 0px;
