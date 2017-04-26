@@ -8,7 +8,7 @@
 angular.module('codingBarrierApp')
         .controller('blogController', function ($rootScope, $sce, BloggerApi) {
 
-            $rootScope.header = 'Code Barrier Blog';
+            $rootScope.header = 'Blog';
             $rootScope.message = '';
             var blogPage = this;
 
