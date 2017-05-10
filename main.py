@@ -24,4 +24,5 @@ def project_links(project):
         "faceblr": "https://chrome.google.com/webstore/detail/faceblr/jblofdhkclkhbcajdmfhklcgolfofbck",
         "wearfull": "https://play.google.com/store/apps/details?id=com.zenbarrier.wearfull",
         "betonblack": "https://play.google.com/store/apps/details?id=com.zenbarrier.betonblack",
+        "zenweather": "https://play.google.com/store/apps/details?id=com.zenbarrier.zenweather",
     }.get(project, "/projects")
