@@ -25,4 +25,5 @@ def project_links(project):
         "wearfull": "https://play.google.com/store/apps/details?id=com.zenbarrier.wearfull",
         "betonblack": "https://play.google.com/store/apps/details?id=com.zenbarrier.betonblack",
         "zenweather": "https://play.google.com/store/apps/details?id=com.zenbarrier.zenweather",
+        "zencompass": "https://play.google.com/store/apps/details?id=com.zenbarrier.zencompass",
     }.get(project, "/projects")
